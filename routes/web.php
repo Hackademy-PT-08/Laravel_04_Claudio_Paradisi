@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PublicController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
+
+Route::get('/prodotti', [ProductController::class, 'index'])->name('product');
+
+Route::get('/prodotti/dettaglio/{id}', [ProductController::class, 'show'] )->name('detail');
